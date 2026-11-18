@@ -1,0 +1,89 @@
+# CODEOWNERS - mirrors .github/ownership.json (the per-member file ownership).
+# The "Mandatory Rules" GitHub Action enforces that each work/<name> branch touches only its own files.
+# The members have no GitHub handles in the repo yet, so every path is owned by the repository admin
+# account. When a member gets a handle, replace @simorghmediaofficial-collab on that member's lines.
+# Later matching lines win, so the catch-all is first.
+
+*                                              @simorghmediaofficial-collab
+
+# --- Atlas: data, settings, security ---
+/SPEC.md                                       @simorghmediaofficial-collab
+/tgcloud/schema.js                             @simorghmediaofficial-collab
+/tgcloud/lib/db.js                             @simorghmediaofficial-collab
+/tgcloud/lib/ids.js                            @simorghmediaofficial-collab
+/tgcloud/lib/settings.js                       @simorghmediaofficial-collab
+/tgcloud/lib/auth.js                           @simorghmediaofficial-collab
+/tgcloud/lib/orders.js                         @simorghmediaofficial-collab
+/tgcloud/handlers/my_chat_member.js            @simorghmediaofficial-collab
+/tgcloud/endpoints/adminGetSettings.js         @simorghmediaofficial-collab
+/tgcloud/endpoints/adminSaveSettings.js        @simorghmediaofficial-collab
+/src/pages/admin/AdminSettings.jsx             @simorghmediaofficial-collab
+
+# --- Nima: bot, support, my orders ---
+/tgcloud/handlers/message.js                   @simorghmediaofficial-collab
+/tgcloud/lib/commands.js                       @simorghmediaofficial-collab
+/tgcloud/lib/i18n.js                           @simorghmediaofficial-collab
+/tgcloud/lib/support.js                        @simorghmediaofficial-collab
+/tgcloud/endpoints/sendSupport.js              @simorghmediaofficial-collab
+/tgcloud/endpoints/myOrders.js                 @simorghmediaofficial-collab
+/src/pages/Support.jsx                         @simorghmediaofficial-collab
+/src/pages/Orders.jsx                          @simorghmediaofficial-collab
+/src/components/OrderCard.jsx                  @simorghmediaofficial-collab
+/src/components/Footer.jsx                     @simorghmediaofficial-collab
+
+# --- Sana: notifications, bot buttons, order management ---
+/tgcloud/handlers/callback_query.js            @simorghmediaofficial-collab
+/tgcloud/lib/keyboards.js                      @simorghmediaofficial-collab
+/tgcloud/lib/format.js                         @simorghmediaofficial-collab
+/tgcloud/lib/notify.js                         @simorghmediaofficial-collab
+/tgcloud/endpoints/adminListOrders.js          @simorghmediaofficial-collab
+/tgcloud/endpoints/adminReviewOrder.js         @simorghmediaofficial-collab
+/tgcloud/endpoints/adminStats.js               @simorghmediaofficial-collab
+/src/pages/admin/AdminDashboard.jsx            @simorghmediaofficial-collab
+/src/pages/admin/AdminOrders.jsx               @simorghmediaofficial-collab
+/src/pages/admin/AdminOrderDetail.jsx          @simorghmediaofficial-collab
+
+# --- Arash: catalog API, images, ordering ---
+/tgcloud/endpoints/getHome.js                  @simorghmediaofficial-collab
+/tgcloud/endpoints/listProducts.js             @simorghmediaofficial-collab
+/tgcloud/endpoints/getProduct.js               @simorghmediaofficial-collab
+/tgcloud/endpoints/getImage.js                 @simorghmediaofficial-collab
+/tgcloud/endpoints/placeOrder.js               @simorghmediaofficial-collab
+/tgcloud/endpoints/submitReceipt.js            @simorghmediaofficial-collab
+/tgcloud/endpoints/adminListProducts.js        @simorghmediaofficial-collab
+/tgcloud/endpoints/adminSaveProduct.js         @simorghmediaofficial-collab
+/tgcloud/endpoints/adminDeleteProduct.js       @simorghmediaofficial-collab
+/tgcloud/endpoints/adminUploadImage.js         @simorghmediaofficial-collab
+
+# --- Mina: mini app shell, home, slider ---
+/src/main.jsx                                  @simorghmediaofficial-collab
+/src/App.jsx                                   @simorghmediaofficial-collab
+/src/api.js                                    @simorghmediaofficial-collab
+/src/store.js                                  @simorghmediaofficial-collab
+/src/styles.css                                @simorghmediaofficial-collab
+/src/lib/fa.js                                 @simorghmediaofficial-collab
+/src/pages/Home.jsx                            @simorghmediaofficial-collab
+/src/pages/Product.jsx                         @simorghmediaofficial-collab
+/src/components/ProductCard.jsx                @simorghmediaofficial-collab
+/src/components/Img.jsx                        @simorghmediaofficial-collab
+/src/components/BottomNav.jsx                  @simorghmediaofficial-collab
+/src/components/HeroSlider.jsx                 @simorghmediaofficial-collab
+
+# --- Kian: build, deploy, cart, checkout, admin products ---
+/package.json                                  @simorghmediaofficial-collab
+/vite.config.js                                @simorghmediaofficial-collab
+/index.html                                    @simorghmediaofficial-collab
+/tgcloud.jsonc                                 @simorghmediaofficial-collab
+/.github/workflows/deploy.yml                  @simorghmediaofficial-collab
+/CODEOWNERS                                    @simorghmediaofficial-collab
+/src/components/Header.jsx                     @simorghmediaofficial-collab
+/src/pages/Cart.jsx                            @simorghmediaofficial-collab
+/src/pages/Checkout.jsx                        @simorghmediaofficial-collab
+/src/pages/admin/AdminProducts.jsx             @simorghmediaofficial-collab
+/src/pages/admin/AdminProductForm.jsx          @simorghmediaofficial-collab
+
+# --- Process files ---
+/WORKFLOW.md                                   @simorghmediaofficial-collab
+/DESIGN.md                                     @simorghmediaofficial-collab
+/docs/                                         @simorghmediaofficial-collab
+/.github/ownership.json  
