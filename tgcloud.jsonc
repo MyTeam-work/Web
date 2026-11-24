@@ -1,0 +1,6 @@
+{
+  // Mini App front-end: the Vite build output is served at https://app<app_id>.tgcloud.ai/
+  "static": {
+    "source": "dist"
+  }
+}
