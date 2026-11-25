@@ -1,0 +1,71 @@
+name: Deploy
+
+# Deploy happens only here (CI). Never run push or migrate by hand.
+# migrate is intentionally absent: it is interactive and is applied by the admin
+# (BotFather > Serverless > Database, or 'npx tgcloud migrate' locally).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy at a time; a running deploy is never cancelled half-way.
+concurrency:
+  group: tgcloud-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Use the lock file when it exists (reproducible); otherwise a plain install.
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            echo "::warning::package-lock.json is missing; commit it so installs are reproducible."
+            npm install --no-audit --no-fund
+          fi
+
+      # Safety: the CLI must come from our own devDependency (@tgcloud/cli).
+      # Never let npx download an unrelated package while the token is in the environment.
+      - name: Check the tgcloud CLI is installed
+        run: |
+          test -x node_modules/.bin/tgcloud || { echo "::error::@tgcloud/cli is not installed. Add it to devDependencies."; exit 1; }
+          npx --no-install tgcloud --version || true
+
+      - name: Build front-end
+        run: npm run build
+
+      - name: Deploy to tgcloud
+        env:
+          TGCLOUD_TOKEN: ${{ secrets.TGCLOUD_TOKEN }}
+        run: |
+          set -o pipefail
+          # A fresh runner has no .tgcloud/ state: learn the current cloud revision first.
+          npx --no-install tgcloud fetch || echo "::warning::tgcloud fetch failed; continuing with push."
+          if ! npx --no-install tgcloud push 2>&1 | tee push.log; then
+            echo "::error::Deploy rejected by tgcloud. If the cloud revision moved on, someone deployed in the meantime: run 'npx tgcloud pull' locally, merge the changes, then merge to main again. This job never retries and never overrides the cloud copy."
+            {
+              echo "### Deploy failed"
+              echo "The cloud copy may have changed since the last deploy. Run \`npx tgcloud pull\` locally, merge, and merge to main again. No retry was made."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          # Show the Mini App address in the job summary (needed for BotFather and /seturl).
+          url=$(grep -Eo 'https://app[0-9A-Za-z_-]*\.tgcloud\.ai/?' push.log | head -n 1 || true)
+          if [ -n "$url" ]; then
+            echo "### Deployed: $url" >> "$GITHUB_STEP_SUMMARY"
+          fi
