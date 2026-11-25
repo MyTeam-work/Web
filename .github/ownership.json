@@ -1,0 +1,79 @@
+{
+  "atlas": [
+    "SPEC.md",
+    "tgcloud/schema.js",
+    "tgcloud/lib/db.js",
+    "tgcloud/lib/ids.js",
+    "tgcloud/lib/settings.js",
+    "tgcloud/lib/auth.js",
+    "tgcloud/lib/orders.js"
+  ],
+  "nima": [
+    "tgcloud/handlers/message.js",
+    "tgcloud/handlers/my_chat_member.js",
+    "tgcloud/lib/commands.js",
+    "tgcloud/lib/i18n.js",
+    "tgcloud/lib/support.js",
+    "tgcloud/endpoints/sendSupport.js",
+    "tgcloud/endpoints/myOrders.js",
+    "src/pages/Support.jsx",
+    "src/pages/Orders.jsx",
+    "src/components/OrderCard.jsx",
+    "src/components/Footer.jsx"
+  ],
+  "sana": [
+    "tgcloud/handlers/callback_query.js",
+    "tgcloud/lib/keyboards.js",
+    "tgcloud/lib/format.js",
+    "tgcloud/lib/notify.js",
+    "tgcloud/endpoints/adminListOrders.js",
+    "tgcloud/endpoints/adminReviewOrder.js",
+    "tgcloud/endpoints/adminStats.js",
+    "src/pages/admin/AdminDashboard.jsx",
+    "src/pages/admin/AdminOrders.jsx",
+    "src/pages/admin/AdminOrderDetail.jsx",
+    "src/pages/admin/AdminSettings.jsx"
+  ],
+  "arash": [
+    "tgcloud/endpoints/getHome.js",
+    "tgcloud/endpoints/listProducts.js",
+    "tgcloud/endpoints/getProduct.js",
+    "tgcloud/endpoints/getImage.js",
+    "tgcloud/endpoints/placeOrder.js",
+    "tgcloud/endpoints/submitReceipt.js",
+    "tgcloud/endpoints/adminListProducts.js",
+    "tgcloud/endpoints/adminSaveProduct.js",
+    "tgcloud/endpoints/adminDeleteProduct.js",
+    "tgcloud/endpoints/adminUploadImage.js",
+    "tgcloud/endpoints/adminGetSettings.js",
+    "tgcloud/endpoints/adminSaveSettings.js"
+  ],
+  "mina": [
+    "src/main.jsx",
+    "src/App.jsx",
+    "src/api.js",
+    "src/store.js",
+    "src/styles.css",
+    "src/lib/fa.js",
+    "src/pages/Home.jsx",
+    "src/pages/Product.jsx",
+    "src/components/ProductCard.jsx",
+    "src/components/Img.jsx",
+    "src/components/BottomNav.jsx",
+    "src/components/HeroSlider.jsx"
+  ],
+  "kian": [
+    "package.json",
+    "vite.config.js",
+    "index.html",
+    "tgcloud.jsonc",
+    ".github/workflows/deploy.yml",
+    "CODEOWNERS",
+    "src/components/Header.jsx",
+    "src/pages/Cart.jsx",
+    "src/pages/Checkout.jsx",
+    "src/pages/admin/AdminProducts.jsx",
+    "src/pages/admin/AdminProductForm.jsx"
+  ],
+  "admin": ["*"]
+}
