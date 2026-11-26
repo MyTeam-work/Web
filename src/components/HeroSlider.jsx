@@ -89,15 +89,19 @@ function Slide({ slide, index, total, eager, stats }) {
         <div className="absolute inset-0 bg-linear-to-br from-navy-700 to-navy-900" aria-hidden="true" />
 
         {hasImage ? (
-          <Img
-            image={slide.image}
-            size="full"
-            tone="navy"
-            eager={eager}
-            position="center 18%"
-            alt={slide.title || ''}
-            className="absolute inset-0 md:start-auto md:end-0 md:w-[62%]"
-          />
+          // The absolute box lives on this wrapper; Img itself must stay "relative size-full",
+          // otherwise its own "relative" class wins over "absolute" and the height collapses to 0.
+          <div className="absolute inset-0 md:start-auto md:end-0 md:w-[62%]">
+            <Img
+              image={slide.image}
+              size="full"
+              tone="navy"
+              eager={eager}
+              position="center 18%"
+              alt={slide.title || ''}
+              className="size-full"
+            />
+          </div>
         ) : (
           <div aria-hidden="true">
             <span className="absolute -end-16 -top-16 size-64 rounded-full bg-white/5 md:size-96" />
